@@ -1,0 +1,143 @@
+{
+    "Environment": {
+        "Version": 1,
+        "Environment": {
+            "Label": "JournalPerformanceMonitor",
+            "Username": "b6so3e",
+            "Created": "23-Jul-2024 10:41:19",
+            "Node Name": "DI2INPUN0638WPC",
+            "Machine Type": "GenuineIntel Family 6 Model 5 Stepping 7, Intel(R) Xeon(R) Silver 4210R CPU @ 2.40GHz",
+            "Release": "NX 2412",
+            "Build": "NX 2412.900",
+            "Group": "Assemblies_nx2412.2024072201"
+        }
+    },
+    "StepDetails": [
+        {
+            "StepId": "0_LoadAssembly",
+            "MemoryState": {
+                "BytesInUse": 1447624704.0,
+                "MaxBytesInUse": 1565130752.0,
+                "BytesFromOS": 494665728.0
+            },
+            "AssemblyState": {
+                "StructureDetails": {
+                    "NumFullyLoadedParts": 1,
+                    "NumPartiallyLoadedParts": 6,
+                    "NumMinimallyLoadedParts": 3716,
+                    "NumOODParts": 3721
+                }
+            },
+            "TimerState": {
+                "TimerStats": {
+                    "Time (seconds)": 109.2377131
+                }
+            }
+        },
+        {
+            "StepId": "1_FlipThicknessDirection",
+            "MemoryState": {
+                "BytesInUse": 1862008832.0,
+                "MaxBytesInUse": 1862139904.0,
+                "BytesFromOS": 732954624.0
+            },
+            "AssemblyState": {
+                "StructureDetails": {
+                    "NumFullyLoadedParts": 65,
+                    "NumPartiallyLoadedParts": 81,
+                    "NumMinimallyLoadedParts": -146,
+                    "NumOODParts": -2
+                }
+            },
+            "TimerState": {
+                "TimerStats": {
+                    "Time (seconds)": 245.838792
+                }
+            }
+        },
+        {
+            "StepId": "2_LoadS330BlockFully",
+            "MemoryState": {
+                "BytesInUse": 3547725824.0,
+                "MaxBytesInUse": 3554082816.0,
+                "BytesFromOS": 1563426816.0
+            },
+            "AssemblyState": {
+                "StructureDetails": {
+                    "NumFullyLoadedParts": 873,
+                    "NumPartiallyLoadedParts": -27,
+                    "NumMinimallyLoadedParts": -846,
+                    "NumOODParts": -822
+                }
+            },
+            "TimerState": {
+                "TimerStats": {
+                    "Time (seconds)": 943.3541126
+                }
+            }
+        },
+        {
+            "StepId": "3_PhasedInterpartUpdate",
+            "MemoryState": {
+                "BytesInUse": 4891213824.0,
+                "MaxBytesInUse": 4892327936.0,
+                "BytesFromOS": 1747976192.0
+            },
+            "AssemblyState": {
+                "StructureDetails": {
+                    "NumFullyLoadedParts": 61,
+                    "NumPartiallyLoadedParts": -60,
+                    "NumMinimallyLoadedParts": -1,
+                    "NumOODParts": -175
+                }
+            },
+            "TimerState": {
+                "TimerStats": {
+                    "Time (seconds)": 1015.4517477
+                }
+            }
+        },
+        {
+            "StepId": "4_SaveAllParts",
+            "MemoryState": {
+                "BytesInUse": 4891213824.0,
+                "MaxBytesInUse": 4892327936.0,
+                "BytesFromOS": 1747976192.0
+            },
+            "AssemblyState": {
+                "StructureDetails": {
+                    "NumFullyLoadedParts": 0,
+                    "NumPartiallyLoadedParts": 0,
+                    "NumMinimallyLoadedParts": 0,
+                    "NumOODParts": 0
+                }
+            },
+            "TimerState": {
+                "TimerStats": {
+                    "Time (seconds)": 0.9429487
+                }
+            }
+        },
+        {
+            "StepId": "5_CloseAllParts",
+            "MemoryState": {
+                "BytesInUse": 3037921280.0,
+                "MaxBytesInUse": 5813043200.0,
+                "BytesFromOS": 1306525696.0
+            },
+            "AssemblyState": {
+                "StructureDetails": {
+                    "NumFullyLoadedParts": -1000,
+                    "NumPartiallyLoadedParts": 0,
+                    "NumMinimallyLoadedParts": -2723,
+                    "NumOODParts": -2722
+                }
+            },
+            "TimerState": {
+                "TimerStats": {
+                    "Time (seconds)": 63.7051621
+                }
+            }
+        }
+    ]
+}

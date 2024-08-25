@@ -1,0 +1,284 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marine Work Flow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar {
+            margin-bottom: 20px;
+            background-color: #c4ffee !important;
+        }
+        .navbar-brand, .nav-link {
+            color: black !important;
+        }
+        .table-container {
+            display: flex;
+            /* justify-content: center; */
+            position: absolute;
+            top: 50px; /* Adjust top position as needed */
+            left: 300px; /* Adjust left position as needed */
+            align-items: center;
+            height: 100vh; /* Adjusted for full viewport height */
+        }
+        body {
+            background-color: #000028;
+            color: white; /* Adjusted text color for better contrast */
+        }
+        .table {
+            background-color: white !important;
+            justify-content: center;
+            width: 150%; /* Adjusted table width */
+        }
+        .table thead th {
+            background-color: white !important;
+            font-size: larger; /* Increase font size */
+            max-width: 150px; /* Set a maximum width for header cells */
+            word-wrap: break-word; /* Enable word wrapping */
+        }
+        
+        /* Additional styles for color coding */
+        .light-red {
+            background-color: rgba(255, 0, 0, 0.15);
+        }
+        .light-blue {
+            background-color: rgba(0, 255, 0, 0.15);
+        }
+        .normal {
+            /* Define normal styling for cells */
+        }
+    </style>
+   
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Marine Work Flow</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container table-container">
+        <div class="">
+            <table class="table table-bordered border-primary">
+                <thead>
+                    <tr>
+                        <th>Test Name</th>
+                        {% for column in table.columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in table.iterrows() %}
+                        <tr>
+                            <td><a href="{{ url_for('test_detail', test_name=index) }}">{{ index }}</a></td>
+                            {% set prev_value = 0 %}
+                            {% for value in row %}
+                                {% if loop.index > 1 %}
+                                    {% set prev_value = row[loop.index0 - 1] %}
+                                    {% set diff_percent = ((value - prev_value) / prev_value) * 100 %}
+                                    {% set diff_seconds = value - prev_value %}
+                                    {% if diff_percent > 3 or diff_seconds > 5 %}
+                                        <td class="light-red">{{ value }}</td>
+                                    {% elif diff_percent < -3 or diff_seconds < -5 %}
+                                        <td class="light-blue">{{ value }}</td>
+                                    {% else %}
+                                        <td class="normal">{{ value }}</td>
+                                    {% endif %}
+                                {% else %}
+                                    <td>{{ value }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marine Work Flow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar {
+            margin-bottom: 20px;
+            background-color: #c4ffee !important;
+        }
+        .navbar-brand, .nav-link {
+            color: black !important;
+        }
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #111;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .table-container {
+            margin-left: 270px; /* Adjusted to accommodate the sidebar */
+            padding: 20px;
+        }
+        body {
+            background-color: #000028;
+            color: white; /* Adjusted text color for better contrast */
+        }
+        .table {
+            background-color: white !important;
+            justify-content: center;
+            width: 130%; /* Adjusted table width */
+        }
+        .table thead th {
+            background-color: white !important;
+            font-size: larger; /* Increase font size */
+            max-width: 150px; /* Set a maximum width for header cells */
+            word-wrap: break-word; /* Enable word wrapping */
+        }
+        .light-red {
+            background-color: rgba(255, 0, 0, 0.15);
+        }
+        .light-blue {
+            background-color: rgba(0, 255, 0, 0.15);
+        }
+        .normal {
+            /* Define normal styling for cells */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Marine Work Flow</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" onclick="showContent('Roles')">Home</a>
+        <a href="#" onclick="showContent('management')">Management</a>
+        <a href="#" onclick="showContent('developer')">Developer</a>
+        <a href="#" onclick="showContent('qa')">QA</a>
+    </div>
+
+    <!-- Content Area -->
+    <div class="container table-container" id="content-area">
+        <div class="">
+            <table class="table table-bordered border-primary">
+                <thead>
+                    <tr>
+                        <th>Test Name</th>
+                        {% for column in table.columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in table.iterrows() %}
+                        <tr>
+                            <td><a href="{{ url_for('test_detail', test_name=index) }}">{{ index }}</a></td>
+                            {% set prev_value = 0 %}
+                            {% for value in row %}
+                                {% if loop.index > 1 %}
+                                    {% set prev_value = row[loop.index0 - 1] %}
+                                    {% set diff_percent = ((value - prev_value) / prev_value) * 100 %}
+                                    {% set diff_seconds = value - prev_value %}
+                                    {% if diff_percent > 3 or diff_seconds > 5 %}
+                                        <td class="light-red">{{ value }}</td>
+                                    {% elif diff_percent < -3 or diff_seconds < -5 %}
+                                        <td class="light-blue">{{ value }}</td>
+                                    {% else %}
+                                        <td class="normal">{{ value }}</td>
+                                    {% endif %}
+                                {% else %}
+                                    <td>{{ value }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showContent(role) {
+            // For now, just reload the home page content regardless of the role selected
+            document.getElementById('content-area').innerHTML = `<div class="">
+                <table class="table table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th>Test Name</th>
+                            {% for column in table.columns %}
+                                <th>{{ column }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for index, row in table.iterrows() %}
+                            <tr>
+                                <td><a href="{{ url_for('test_detail', test_name=index) }}">{{ index }}</a></td>
+                                {% set prev_value = 0 %}
+                                {% for value in row %}
+                                    {% if loop.index > 1 %}
+                                        {% set prev_value = row[loop.index0 - 1] %}
+                                        {% set diff_percent = ((value - prev_value) / prev_value) * 100 %}
+                                        {% set diff_seconds = value - prev_value %}
+                                        {% if diff_percent > 3 or diff_seconds > 5 %}
+                                            <td class="light-red">{{ value }}</td>
+                                        {% elif diff_percent < -3 or diff_seconds < -5 %}
+                                            <td class="light-blue">{{ value }}</td>
+                                        {% else %}
+                                            <td class="normal">{{ value }}</td>
+                                        {% endif %}
+                                    {% else %}
+                                        <td>{{ value }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>`;
+        }
+    </script>
+</body>
+</html>
